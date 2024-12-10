@@ -218,7 +218,7 @@ nav a:hover {
 
 .service-card {
   position: relative;
-  border: 2px solid transparent;
+  border: 2px solid var(--primary-green);
   background: var(--card-bg);
   padding: 2rem;
   border-radius: 10px;
@@ -262,25 +262,7 @@ nav a:hover {
   bottom: 0;
   border: 2px solid var(--primary-green);
   border-radius: 10px;
-  animation: borderAnimation 4s linear infinite;
-}
-
-@keyframes borderAnimation {
-  0% {
-    clip-path: inset(0 0 95% 0);
-  }
-  25% {
-    clip-path: inset(0 0 0 95%);
-  }
-  50% {
-    clip-path: inset(95% 0 0 0);
-  }
-  75% {
-    clip-path: inset(0 95% 0 0);
-  }
-  100% {
-    clip-path: inset(0 0 95% 0);
-  }
+  animation: none;
 }
 
 .btn {
@@ -444,7 +426,17 @@ nav a:hover {
 }
 
 .modal-content .btn {
-  pointer-events: none; /* This will disable click events */
+  background: transparent;
+  border: 2px solid var(--primary-green);
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.modal-content .btn:hover {
+  background: transparent;
+  transform: none;
+  box-shadow: none;
 }
 
 @keyframes modalSlideIn {
@@ -593,9 +585,7 @@ nav a:hover {
 }
 
 button.btn[onclick="openProductsModal()"] {
-  display: block;
-  margin: 4rem auto 2rem auto; /* Increased top margin from 2rem to 4rem */
-  background: var(--primary-green);
+  display: none; /* Removed the button */
 }
 
 /* Update the product card button styles */
@@ -658,17 +648,11 @@ button.btn[onclick="openProductsModal()"] {
 
 .animated-btn {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .btn-animation {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
-  animation: btnShine 2s infinite;
+  display: none;
 }
 
 /* Update QR generator colors */
@@ -757,16 +741,6 @@ button.btn[onclick="openProductsModal()"] {
       </ul>
     </div>
 
-    <div class="service-card" onclick="openModal('lora')">
-      <h2>Solution LORA</h2>
-      <p>Technologies IoT avancées comprenant :</p>
-      <ul>
-        <li>Déploiement de réseaux LoRaWAN</li>
-        <li>Capteurs intelligents</li>
-        <li>Plateforme de gestion centralisée</li>
-      </ul>
-    </div>
-
     <div class="service-card" onclick="openModal('flowbot')">
       <h2>FLOWBOT</h2>
       <p>Bot multifonctionnel pour la gestion numérique</p>
@@ -781,14 +755,13 @@ button.btn[onclick="openProductsModal()"] {
       </ul>
     </div>
 
-    <div class="service-card" onclick="openModal('pentester')">
-      <h2>Pentesting</h2>
-      <p>Services de sécurité et analyse des vulnérabilités</p>
+    <div class="service-card" onclick="openModal('lora')">
+      <h2>Solution LORA</h2>
+      <p>Technologies IoT avancées comprenant :</p>
       <ul>
-        <li>Identification des failles</li>
-        <li>Tests d'intrusion</li>
-        <li>Analyse des versions</li>
-        <li>Recommandations sécurité</li>
+        <li>Déploiement de réseaux LoRaWAN</li>
+        <li>Capteurs intelligents</li>
+        <li>Plateforme de gestion centralisée</li>
       </ul>
     </div>
 
@@ -800,6 +773,31 @@ button.btn[onclick="openProductsModal()"] {
         <li>Sans frais mensuels</li>
         <li>Paiements directs</li>
         <li>Gestion des livraisons</li>
+      </ul>
+    </div>
+
+    <div class="service-card" onclick="openModal('server')">
+      <h2>Serveur Privé</h2>
+      <p>Solution de serveur privé personnalisé pour un contrôle total de vos données.</p>
+      <ul>
+        <li>Infrastructure optimisée et fiable</li>
+        <li>Contrôle total et chiffrement avancé</li>
+        <li>Confidentialité garantie</li>
+        <li>Accès à distance sécurisé</li>
+        <li>Stockage flexible et adaptable</li>
+        <li>Sans frais mensuels</li>
+        <li>Solution économique durable</li>
+      </ul>
+    </div>
+
+    <div class="service-card" onclick="openModal('pentester')">
+      <h2>Pentesting</h2>
+      <p>Services de sécurité et analyse des vulnérabilités</p>
+      <ul>
+        <li>Identification des failles</li>
+        <li>Tests d'intrusion</li>
+        <li>Analyse des versions</li>
+        <li>Recommandations sécurité</li>
       </ul>
     </div>
   </div>
@@ -834,211 +832,95 @@ button.btn[onclick="openProductsModal()"] {
   </div>
 </section>
 
-<!-- Removed the AliExpress banner section -->
-
-<section class="recommended-products" style="padding: 6rem 2rem; background: var(--dark-bg);">
-  <!-- First product card -->
-  <div class="product-card" style="
-    max-width: 800px;
-    margin: 0 auto 2rem auto;
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--primary-green);
-  ">
-    <h3 style="
-      font-size: 1.5rem;
-      color: var(--primary-green);
-      margin-bottom: 1rem;
-      position: relative;
-    ">LILYGO® TTGO Meshtastic T-Echo</h3>
-    
-    <p style="margin-bottom: 1rem; position: relative;">
-      Module sans fil meshtastique t-echo LoRa SX1262, 433/868/915MHz, NRF52840 1.54 e-papier GPS RTC NFC BME280 pour Arduino
-    </p>
-    
-    <div style="
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-    ">
-      <span style="font-size: 1.5rem; color: #ffd700;">CHF 51.19</span>
-      <span style="text-decoration: line-through; color: #666;">CHF 56.88</span>
-      <span style="background: #ffd700; color: #000000; padding: 0.2rem 0.5rem; border-radius: 5px; font-size: 0.9rem;">10% off</span>
-    </div>
-    
-    <a href="https://s.click.aliexpress.com/e/_EH8NzIk" 
-       target="_blank"
-       class="btn"
-       style="display: inline-block; text-decoration: none; position: relative;">
-      🛒 Acheter Maintenant
-    </a>
+<div class="qr-generator">
+  <h2>Générateur de QR Code</h2>
+  <input type="text" id="qrText" placeholder="Entrez le texte ou l'URL">
+  <button class="btn" onclick="generateQR()">Générer QR Code</button>
+  <div id="qrOutput">
+    <img id="qrImage" style="display: none;">
   </div>
+  <button class="btn" id="downloadBtn" onclick="downloadQR()" style="display: none;">
+    Télécharger QR Code
+  </button>
+</div>
 
-  <!-- Second product card (new) -->
-  <div class="product-card" style="
-    max-width: 800px;
-    margin: 0 auto;
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--primary-green);
-  ">
-    <h3 style="
-      font-size: 1.5rem;
-      color: var(--primary-green);
-      margin-bottom: 1rem;
-      position: relative;
-    ">GMKtec-Mini PC M6</h3>
-    
-    <p style="margin-bottom: 1rem; position: relative;">
-      Ordinateur de Bureau AMD R5 6600H, 6 Cœurs, 12 Fils, 16 Go DDR5, 512 Go PCIe, 3.0 SSD, WiFi, 6 BT Stimule
-    </p>
-    
-    <div style="
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-    ">
-      <span style="font-size: 1.5rem; color: #ffd700;">CHF 240.19</span>
-      <span style="text-decoration: line-through; color: #666;">CHF 686.26</span>
-      <span style="background: #ffd700; color: #000000; padding: 0.2rem 0.5rem; border-radius: 5px; font-size: 0.9rem;">65% off</span>
+<div id="contact" class="contact-form">
+  <h2>Contactez-nous</h2>
+  <form id="contactForm" onsubmit="submitToTelegram(event)">
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" name="name" required>
     </div>
     
-    <a href="https://s.click.aliexpress.com/e/_mrIWgwj" 
-       target="_blank"
-       class="btn"
-       style="display: inline-block; text-decoration: none; position: relative;">
-      🛒 Acheter Maintenant
-    </a>
-  </div>
-</section>
-
-<button class="btn" onclick="openProductsModal()" style="
-  display: block;
-  margin: 4rem auto 2rem auto; /* Increased top margin from 2rem to 4rem */
-  background: var(--primary-green);
-">
-  Voir Plus de Produits
-</button>
-
-<!-- Add this new modal for products -->
-<div id="productsModal" class="modal">
-  <div class="modal-content" style="background: var(--dark-bg);">
-    <span class="close" onclick="closeProductsModal()">&times;</span>
-    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: var(--primary-green);">
-      Produits Recommandés
-    </h2>
-    
-    <div style="display: grid; gap: 2rem;">
-      <!-- Product 1 -->
-      <div class="product-card" style="
-        background: var(--card-bg);
-        border-radius: 15px;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid var(--primary-green);
-      ">
-        <h3 style="font-size: 1.5rem; color: var(--primary-green); margin-bottom: 1rem;">
-          OPTFOCUS-Mini Routeur Wifi de Poche
-        </h3>
-        <p style="margin-bottom: 1rem;">
-          Routeur Wifi avec Carte Sim, Modem, 5G, NR, NSA, 5000mAh, MIFI 6, 4G, 5G, Dispositif de Permanence
-        </p>
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-          <span style="font-size: 1.5rem; color: #ffd700;">CHF 83.69</span>
-        </div>
-        <a href="https://s.click.aliexpress.com/e/_EvfTmyc" target="_blank" class="btn">
-          🛒 Acheter Maintenant
-        </a>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="product-card" style="
-        background: var(--card-bg);
-        border-radius: 15px;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid var(--primary-green);
-      ">
-        <h3 style="font-size: 1.5rem; color: var(--primary-green); margin-bottom: 1rem;">
-          GL.iNet GL-MT3000 (Beryl Humanity)
-        </h3>
-        <p style="margin-bottom: 1rem;">
-          Wi-Fi 6 Routeur Gigabit de voyage sans fil, Wi-Fi allergique public et hôtelier, Portail captif, Cybersécurité
-        </p>
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-          <span style="font-size: 1.5rem; color: #ffd700;">CHF 71.99</span>
-          <span style="text-decoration: line-through; color: #666;">CHF 109.08</span>
-          <span style="background: #ffd700; color: #000000; padding: 0.2rem 0.5rem; border-radius: 5px; font-size: 0.9rem;">34% off</span>
-        </div>
-        <a href="https://s.click.aliexpress.com/e/_EI3HKvQ" target="_blank" class="btn">
-          🛒 Acheter Maintenant
-        </a>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card" style="
-        background: var(--card-bg);
-        border-radius: 15px;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid var(--primary-green);
-      ">
-        <h3 style="font-size: 1.5rem; color: var(--primary-green); margin-bottom: 1rem;">
-          Lerdge-Kit d'imprimante 3D GE iX
-        </h3>
-        <p style="margin-bottom: 1rem;">
-          Creality K1, FDM, Mise à niveau, Extrudeuse, Équipement Touriste, Imprimante DIY, Feuille Pei
-        </p>
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-          <span style="font-size: 1.5rem; color: #ffd700;">CHF 116.69</span>
-          <span style="text-decoration: line-through; color: #666;">CHF 166.70</span>
-          <span style="background: #ffd700; color: #000000; padding: 0.2rem 0.5rem; border-radius: 5px; font-size: 0.9rem;">30% off</span>
-        </div>
-        <a href="https://s.click.aliexpress.com/e/_okh0d53" target="_blank" class="btn">
-          🛒 Acheter Maintenant
-        </a>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="product-card" style="
-        background: var(--card-bg);
-        border-radius: 15px;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid var(--primary-green);
-      ">
-        <h3 style="font-size: 1.5rem; color: var(--primary-green); margin-bottom: 1rem;">
-          EGCHALANCEMENT-Support externe Thunderbolt
-        </h3>
-        <p style="margin-bottom: 1rem;">
-          Support externe Thunderbolt 3/4 à carte pcie, peut être installé, alimentation ATX 7900XT/rtx4090
-        </p>
-        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-          <span style="font-size: 1.5rem; color: #ffd700;">CHF 111.69</span>
-        </div>
-        <a href="https://s.click.aliexpress.com/e/_ooScLwH" target="_blank" class="btn">
-          🛒 Acheter Maintenant
-        </a>
-      </div>
+    <div class="form-group">
+      <label>Téléphone</label>
+      <input type="tel" name="phone" required>
     </div>
+    
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+      <label>Secteur d'activité</label>
+      <select name="sector" required>
+        <option value="">Sélectionnez...</option>
+        <option value="wifi">Solutions WiFi</option>
+        <option value="web">Création Web</option>
+        <option value="google">Présence Google</option>
+        <option value="lora">Solution LORA</option>
+        <option value="flowbot">Flowbot</option>
+        <option value="pentester">Pentesting</option>
+        <option value="restaurant">Système de Commande</option>
+        <option value="server">Serveur Privé</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Message</label>
+      <textarea name="message" required></textarea>
+    </div>
+    
+    <button type="submit" class="btn">Envoyer</button>
+  </form>
+</div>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div id="modalText"></div>
   </div>
 </div>
 
-<!-- Add these JavaScript functions -->
+<footer style="text-align: center; padding: 2rem; background: var(--dark-bg);">
+  <div style="margin-bottom: 1rem;">
+    <a href="https://www.instagram.com/FLOWTECHNOLOGY_/" target="_blank" style="text-decoration: none; color: var(--primary-green); margin-right: 1rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: var(--primary-green); vertical-align: middle;">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <svg width="24" height="24" viewBox="0 0 32 32" style="margin: 0 0.5rem; vertical-align: middle;">
+      <rect width="32" height="32" fill="#FF0000"/>
+      <rect x="13" y="6" width="6" height="20" fill="#FFFFFF"/>
+      <rect x="6" y="13" width="20" height="6" fill="#FFFFFF"/>
+    </svg>
+    <svg width="24" height="24" viewBox="0 0 32 32" style="margin: 0 0.5rem; vertical-align: middle;">
+      <rect width="32" height="32" fill="#009c3b"/>
+      <path d="M16,3 L28,16 L16,29 L4,16 L16,3Z" fill="#ffdf00"/>
+      <circle cx="16" cy="16" r="6" fill="#002776"/>
+      <path d="M16,12 A4,4 0 0,1 20,16" stroke="#fff" fill="none"/>
+    </svg>
+    <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
+      <svg width="20" height="20" viewBox="0 0 24 24" style="animation: rotate 3s linear infinite;">
+        <path fill="var(--primary-green)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+        <path fill="var(--primary-green)" d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
+      </svg>
+      2025 Flow Technology Innovation et Expertise
+    </span>
+  </div>
+</footer>
+
 <script>
 function openProductsModal() {
   const modal = document.getElementById('productsModal');
@@ -1261,23 +1143,20 @@ function openModal(service) {
           </a>
         </div>`;
       break;
-    case 'restaurant':
+    case 'server':
       modalText.innerHTML = `
-        <h2>Système de Commande en Ligne</h2>
-        <p>Solution complète pour restaurants</p>
+        <h2>Serveur Privé</h2>
+        <p>Votre propre serveur privé avec contrôle total, économie et performance.</p>
         <div class="modal-details">
-          <h3>Fonctionnalités:</h3>
+          <h3>Avantages:</h3>
           <ul>
-            <li>Menu digital personnalisé avec photos</li>
-            <li>Sans frais mensuels ni commissions</li>
-            <li>Paiements directs sur votre compte</li>
-            <li>Gestion des livraisons et takeaway</li>
-            <li>Interface administrateur simple</li>
-            <li>QR codes pour tables</li>
-            <li>Statistiques en temps réel</li>
-            <li>Gestion des stocks</li>
-            <li>Programme de fidélité intégré</li>
-            <li>Support technique 7/7</li>
+            <li>Technologie Premium: Infrastructure optimisée et fiable, conçue pour des performances élevées et une longue durabilité</li>
+            <li>Sécurité Avant Tout: Contrôle total et chiffrement avancé pour protéger vos fichiers et vos données</li>
+            <li>Vie Privée Totale: Vos fichiers et documents restent uniquement entre vos mains</li>
+            <li>Accès à Distance Simplifié: Connectez-vous à votre serveur depuis n'importe où</li>
+            <li>Mémoire Déchargée: Ne surchargez pas votre ordinateur</li>
+            <li>Économie Réelle et Durable: Pas d'abonnements mensuels ou annuels</li>
+            <li>Stockage Flexible: Idéal pour les petites entreprises et l'usage domestique</li>
           </ul>
           <a href="#contact" class="btn animated-btn" style="
             background: transparent;
@@ -1286,7 +1165,7 @@ function openModal(service) {
             text-decoration: none;
             display: inline-block;
           ">
-            <span>Découvrir l'offre</span>
+            <span>En savoir plus</span>
             <div class="btn-animation"></div>
           </a>
         </div>`;
@@ -1497,353 +1376,6 @@ document.querySelector('a[href="#contact"]').addEventListener('click', (e) => {
     behavior: 'smooth'
   });
 });
-</script>
-
-<div class="qr-generator">
-  <h2>Générateur de QR Code</h2>
-  <input type="text" id="qrText" placeholder="Entrez le texte ou l'URL">
-  <button class="btn" onclick="generateQR()">Générer QR Code</button>
-  <div id="qrOutput">
-    <img id="qrImage" style="display: none;">
-  </div>
-  <button class="btn" id="downloadBtn" onclick="downloadQR()" style="display: none;">
-    Télécharger QR Code
-  </button>
-</div>
-
-<div id="contact" class="contact-form">
-  <h2>Contactez-nous</h2>
-  <form id="contactForm" onsubmit="submitToTelegram(event)">
-    <div class="form-group">
-      <label>Nom</label>
-      <input type="text" name="name" required>
-    </div>
-    
-    <div class="form-group">
-      <label>Téléphone</label>
-      <input type="tel" name="phone" required>
-    </div>
-    
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" name="email" required>
-    </div>
-    
-    <div class="form-group">
-      <label>Secteur d'activité</label>
-      <select name="sector" required>
-        <option value="">Sélectionnez...</option>
-        <option value="wifi">Solutions WiFi</option>
-        <option value="web">Création Web</option>
-        <option value="google">Présence Google</option>
-        <option value="lora">Solution LORA</option>
-        <option value="flowbot">Flowbot</option>
-        <option value="pentester">Pentesting</option>
-        <option value="restaurant">Système de Commande</option>
-      </select>
-    </div>
-    
-    <div class="form-group">
-      <label>Message</label>
-      <textarea name="message" required></textarea>
-    </div>
-    
-    <button type="submit" class="btn">Envoyer</button>
-  </form>
-</div>
-
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <div id="modalText"></div>
-  </div>
-</div>
-
-<footer style="text-align: center; padding: 2rem; background: var(--dark-bg);">
-  <div style="margin-bottom: 1rem;">
-    <a href="https://www.instagram.com/FLOWTECHNOLOGY_/" target="_blank" style="text-decoration: none; color: var(--primary-green); margin-right: 1rem;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: var(--primary-green); vertical-align: middle;">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-    </a>
-    <svg width="24" height="24" viewBox="0 0 32 32" style="margin: 0 0.5rem; vertical-align: middle;">
-      <rect width="32" height="32" fill="#FF0000"/>
-      <rect x="13" y="6" width="6" height="20" fill="#FFFFFF"/>
-      <rect x="6" y="13" width="20" height="6" fill="#FFFFFF"/>
-    </svg>
-    <svg width="24" height="24" viewBox="0 0 32 32" style="margin: 0 0.5rem; vertical-align: middle;">
-      <rect width="32" height="32" fill="#009c3b"/>
-      <path d="M16,3 L28,16 L16,29 L4,16 L16,3Z" fill="#ffdf00"/>
-      <circle cx="16" cy="16" r="6" fill="#002776"/>
-      <path d="M16,12 A4,4 0 0,1 20,16" stroke="#fff" fill="none"/>
-    </svg>
-    <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
-      <svg width="20" height="20" viewBox="0 0 24 24" style="animation: rotate 3s linear infinite;">
-        <path fill="var(--primary-green)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-        <path fill="var(--primary-green)" d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
-      </svg>
-      2025 Flow Technology Innovation et Expertise
-    </span>
-  </div>
-</footer>
-
-<script>
-document.querySelectorAll('.btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.style.animation = 'pulse 0.5s';
-    setTimeout(() => btn.style.animation = '', 500);
-  });
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-
-// Modal functionality
-function openModal(service) {
-  const modal = document.getElementById('myModal');
-  const modalText = document.getElementById('modalText');
-  
-  modal.style.display = "block";
-  document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  
-  modalText.style.opacity = '0';
-  setTimeout(() => {
-    modalText.style.opacity = '1';
-    modalText.style.transition = 'opacity 0.3s ease-out';
-  }, 100);
-
-  switch(service) {
-    case 'wifi':
-      modalText.innerHTML = `
-        <h2>Solutions Internet et Wi-Fi</h2>
-        <p>Notre solution portable innovante pour une connexion internet sans contrainte.</p>
-        <div class="modal-details">
-          <h3>Nos services:</h3>
-          <ul>
-            <li>Modem portable 4G/5G compact avec carte SIM incluse</li>
-            <li>Connexion internet immédiate - branchez et surfez!</li>
-            <li>Seulement 20 CHF par mois</li>
-            <li>Aucun engagement de 24 mois</li>
-            <li>Idéal pour particuliers et entreprises</li>
-            <li>Configuration et sécurisation de réseaux WiFi</li>
-            <li>Portails captifs personnalisés sur demande</li>
-          </ul>
-          <a href="#contact" class="btn animated-btn" style="
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            color: white;
-            margin-top: 2rem;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            display: inline-block;
-          ">
-            <span style="position: relative; z-index: 1;">20 CHF / Mois</span>
-            <div class="btn-animation"></div>
-          </a>
-        </div>`;
-      break;
-    case 'web':
-      modalText.innerHTML = `
-        <h2>Création Web</h2>
-        <p>Des sites web personnalisés qui se démarquent et offrent une expérience utilisateur exceptionnelle, essentiels pour votre présence en ligne.</p>
-        <div class="modal-details">
-          <h3>Nos offres:</h3>
-          <ul>
-            <li>Sites web simples et efficaces</li>
-            <li>Solutions professionnelles complètes</li>
-            <li>Design moderne et responsive</li>
-            <li>Optimisation SEO</li>
-            <li>Solutions sur mesure</li>
-          </ul>
-          <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2rem;">
-            <a href="#contact" class="btn animated-btn" style="background: transparent; border: 2px solid var(--primary-green); text-decoration: none;">
-              <span>Site Simple: Gratuit*</span>
-              <div class="btn-animation"></div>
-            </a>
-            <a href="#contact" class="btn animated-btn" style="background: transparent; border: 2px solid var(--primary-green); text-decoration: none;">
-              <span>Site Pro: dès 800 CHF</span>
-              <div class="btn-animation"></div>
-            </a>
-          </div>
-          <p style="font-size: 0.8rem; margin-top: 1rem;">*Sans frais mensuels ou annuels, à partir de 500 CHF</p>
-        </div>`;
-      break;
-    case 'google':
-      modalText.innerHTML = `
-        <h2>Présence Google</h2>
-        <p>Optimisation complète de votre présence sur Google.</p>
-        <div class="modal-details">
-          <h3>Services inclus:</h3>
-          <ul>
-            <li>Mise à jour de profil Google existant</li>
-            <li>Photos et vidéos professionnelles</li>
-            <li>Mise à jour Google Maps</li>
-            <li>Optimisation des informations</li>
-            <li>Gestion des avis clients</li>
-            <li>Support continu</li>
-          </ul>
-          <a href="#contact" class="btn animated-btn" style="
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            margin-top: 2rem;
-            text-decoration: none;
-            display: inline-block;
-          ">
-            <span>400 CHF</span>
-            <div class="btn-animation"></div>
-          </a>
-        </div>`;
-      break;
-    case 'lora':
-      modalText.innerHTML = `
-        <h2>Solution LORA</h2>
-        <p>Technologies IoT avancées comprenant :</p>
-        <div class="modal-details">
-          <h3>Services inclus:</h3>
-          <ul>
-            <li>Déploiement de réseaux LoRaWAN</li>
-            <li>Capteurs intelligents</li>
-            <li>Plateforme de gestion centralisée</li>
-            <li>Solutions personnalisées IoT</li>
-          </ul>
-          <a href="#contact" class="btn animated-btn" style="
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            margin-top: 2rem;
-            text-decoration: none;
-            display: inline-block;
-          ">
-            <span>Contactez-nous</span>
-            <div class="btn-animation"></div>
-          </a>
-        </div>`;
-      break;
-    case 'flowbot':
-      modalText.innerHTML = `
-        <h2>FLOWBOT</h2>
-        <p>Bot multifonctionnel pour la gestion numérique</p>
-        <div class="modal-details">
-          <h3>Développé par Flow Technology</h3>
-          <p>Ce bot multifonctionnel est conçu pour aider les entreprises, les particuliers, et les professionnels à gérer des tâches numériques essentielles de manière simple et rapide. Que vous soyez un commerçant cherchant à communiquer efficacement, un entrepreneur nécessitant des outils de vérification en ligne, ou un particulier souhaitant sécuriser ses données, ce bot est fait pour vous.</p>
-          
-          <h3>Fonctionnalités:</h3>
-          <ul>
-            <li>SMS worldwide - Envoi de SMS à l'international<br>
-               <small>Envoyez des messages texte rapidement et facilement à n'importe quel numéro. Parfait pour les entreprises souhaitant rester en contact avec leurs clients ou pour des usages personnels.</small></li>
-            
-            <li>Whois lookup - Vérification des domaines<br>
-               <small>Accédez aux détails techniques et administratifs des sites web, y compris leur propriétaire, leur date de création et leurs serveurs DNS.</small></li>
-            
-            <li>SSL verification - Analyse des certificats SSL<br>
-               <small>Garantissez votre sécurité en ligne en vérifiant la validité des certificats SSL des sites que vous visitez.</small></li>
-            
-            <li>QR Code generator - Création de codes QR personnalisés<br>
-               <small>Transformez facilement des liens ou des informations en QR Codes prêts à être partagés.</small></li>
-            
-            <li>IP checker - Vérification d'adresses IP<br>
-               <small>Identifiez votre adresse IP publique en un clic et recevez un lien pour explorer plus d'informations.</small></li>
-
-            <li>Sherlock - Investigation des profils en ligne<br>
-               <small>Un outil puissant de reconnaissance qui permet de retrouver les comptes de réseaux sociaux associés à un nom d'utilisateur à travers plus de 350 sites web. Idéal pour les investigations numériques et la vérification d'identité en ligne.</small></li>
-            
-            <li>Password generator - Création de mots de passe sécurisés<br>
-               <small>Protégez vos comptes en ligne grâce à des mots de passe robustes générés automatiquement.</small></li>
-          </ul>
-
-          <h3>Flowbot 1.0 - Efficacité à Votre Portée</h3>
-          <p>Notre système est constamment surveillé et amélioré pour garantir une expérience fluide et innovante à nos utilisateurs. Avec l'ajout récent de Sherlock, notre bot devient encore plus puissant dans le domaine de la reconnaissance et de l'investigation en ligne. Chez Flow Technology, nous travaillons activement sur de nouveaux codes et outils pour enrichir les fonctionnalités et répondre à vos besoins numériques.</p>
-          
-          <p style="margin-top: 1rem;"><strong>Restez connectés et préparez-vous pour une évolution encore plus impressionnante. FLOWBOT 2.0 arrive bientôt ! 🚀</strong></p>
-          
-          <a href="#contact" class="btn animated-btn" style="
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            margin-top: 2rem;
-            text-decoration: none;
-            display: inline-block;
-          ">
-            <span style="position: relative; z-index: 1;">En savoir plus</span>
-            <div class="btn-animation"></div>
-          </a>
-        </div>`;
-      break;
-    case 'pentester':
-      modalText.innerHTML = `
-        <h2>Pentesting</h2>
-        <p>Services de sécurité et analyse des vulnérabilités</p>
-        <div class="modal-details">
-          <h3>Services inclus:</h3>
-          <ul>
-            <li>Identification des failles</li>
-            <li>Tests d'intrusion</li>
-            <li>Analyse des versions</li>
-            <li>Recommandations sécurité</li>
-          </ul>
-          <a href="#contact" class="btn animated-btn" style="
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            margin-top: 2rem;
-            text-decoration: none;
-            display: inline-block;
-          ">
-            <span>Demander un devis</span>
-            <div class="btn-animation"></div>
-          </a>
-        </div>`;
-      break;
-    case 'restaurant':
-      modalText.innerHTML = `
-        <h2>Système de Commande en Ligne</h2>
-        <p>Solution complète pour restaurants</p>
-        <div class="modal-details">
-          <h3>Fonctionnalités:</h3>
-          <ul>
-            <li>Menu digital personnalisé avec photos</li>
-            <li>Sans frais mensuels ni commissions</li>
-            <li>Paiements directs sur votre compte</li>
-            <li>Gestion des livraisons et takeaway</li>
-            <li>Interface administrateur simple</li>
-            <li>QR codes pour tables</li>
-            <li>Statistiques en temps réel</li>
-            <li>Gestion des stocks</li>
-            <li>Programme de fidélité intégré</li>
-            <li>Support technique 7/7</li>
-          </ul>
-          <a href="#contact" class="btn animated-btn" style="
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            margin-top: 2rem;
-            text-decoration: none;
-            display: inline-block;
-          ">
-            <span>Découvrir l'offre</span>
-            <div class="btn-animation"></div>
-          </a>
-        </div>`;
-      break;
-  }
-
-  // Update all modal button href attributes to use the contact section ID
-  setTimeout(() => {
-    const modalButtons = document.querySelectorAll('.modal-content a[href="#contact"]');
-    modalButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        closeModal();
-        document.querySelector('#contact').scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  }, 100);
-}
 </script>
 
 </body></html>
