@@ -696,7 +696,7 @@ button.btn[onclick="openProductsModal()"] {
   <div class="connectivity-animation"></div>
   <div class="hero-content">
     <h1>Solutions intelligentes et connectées</h1>
-    <p>Optimisez votre quotidien et votre entreprise avec des solutions innovantes et personnalisées! 🚀</p>
+    <p>Optimisez votre entreprise avec des solutions innovantes et personnalisées</p>
     <button class="btn">Découvrir nos services</button>
   </div>
 </div>
@@ -1314,6 +1314,20 @@ document.addEventListener('DOMContentLoaded', function() {
   navToggle.addEventListener('click', function() {
     nav.classList.toggle('active');
     this.classList.toggle('active');
+  });
+
+  // Smooth scrolling for all navigation links
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      document.getElementById(targetId).scrollIntoView({
+        behavior: 'smooth'
+      });
+      // Close mobile menu if open
+      nav.classList.remove('active');
+      navToggle.classList.remove('active');
+    });
   });
 
   // Close menu when clicking a link
