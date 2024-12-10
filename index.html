@@ -77,6 +77,7 @@ nav ul {
   display: flex;
   list-style: none;
   gap: 2rem;
+  margin-right: 2rem; /* Add this to move menu items left */
 }
 
 nav a {
@@ -498,8 +499,13 @@ nav a:hover {
   transition: transform 0.3s ease;
 }
 
-.modal-details li:hover:before {
-  transform: translateX(5px);
+.modal-details a {
+  color: white !important;
+  text-decoration: none;
+}
+
+.modal-details a:hover {
+  color: #fff !important;
 }
 
 .close {
@@ -668,6 +674,19 @@ button.btn[onclick="openProductsModal()"] {
 .qr-generator .btn:hover {
   background: #e6c200;
 }
+
+/* Update the modal details link styles */
+.modal-details a {
+  transition: color 0.3s ease;
+}
+
+.modal-details a:hover {
+  color: #fff !important;
+}
+
+.modal-details li {
+  margin-bottom: 1.5rem;
+}
 </style>
 </head>
 <body>
@@ -696,7 +715,7 @@ button.btn[onclick="openProductsModal()"] {
   <div class="connectivity-animation"></div>
   <div class="hero-content">
     <h1>Solutions intelligentes et connectées</h1>
-    <p>Optimisez votre quotidien et votre entreprise avec des solutions innovantes et personnalisées! 🚀</p>
+    <p>Optimisez votre entreprise avec des solutions innovantes et personnalisées</p>
     <button class="btn">Découvrir nos services</button>
   </div>
 </div>
@@ -832,6 +851,51 @@ button.btn[onclick="openProductsModal()"] {
   </div>
 </section>
 
+<button onclick="openClientsModal()" class="btn" style="display: block; margin: 2rem auto; background: transparent; border: 2px solid var(--primary-green);">
+  CLIENTS
+</button>
+
+<div id="clientsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeClientsModal()">&times;</span>
+    <h2>Nos Réalisations</h2>
+    <div class="modal-details">
+      <h3>Sites Web Professionnels:</h3>
+      <ul style="margin-top: 1.5rem;">
+        <li>
+          <a href="https://www.banobu.ch/" target="_blank" style="color: var(--primary-green); text-decoration: none;">
+            Banobu - Site Professionnel
+          </a>
+        </li>
+        <li>
+          <a href="https://www.voonsports.ch/" target="_blank" style="color: var(--primary-green); text-decoration: none;">
+            Voon Sports - Site E-commerce
+          </a>
+        </li>
+        <li>
+          <a href="https://www.livrariamoria.ch/" target="_blank" style="color: var(--primary-green); text-decoration: none;">
+            Livraria Moria - Site Professionnel
+          </a>
+        </li>
+        <li>
+          <a href="https://sites.google.com/view/janainabeauty" target="_blank" style="color: var(--primary-green); text-decoration: none;">
+            Janaína Beauty - Site Simple
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tpg.ch/fr" target="_blank" style="color: var(--primary-green); text-decoration: none;">
+            TPG - Transports Publics Genevois
+          </a>
+          <p style="margin-top: 0.5rem; font-size: 0.9em; color: #ffd700;">
+            <span>★★★★★</span> Rapport Technique : Nous avons identifié et signalé par Flow Technology une erreur sur les machines de paiement TPG à Genève-Suisse.
+Une action essentielle qui a permis d’éviter un préjudice de 17 280 CHF par an.<br>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="qr-generator">
   <h2>Générateur de QR Code</h2>
   <input type="text" id="qrText" placeholder="Entrez le texte ou l'URL">
@@ -937,8 +1001,12 @@ function closeProductsModal() {
 // Close products modal when clicking outside
 window.onclick = function(event) {
   const modal = document.getElementById('productsModal');
+  const clientsModal = document.getElementById('clientsModal');
   if (event.target == modal) {
-    closeProductsModal();
+    closeModal();
+  }
+  if (event.target == clientsModal) {
+    closeClientsModal();
   }
 }
 
@@ -1198,20 +1266,29 @@ function closeModal() {
   }, 300);
 }
 
+function openClientsModal() {
+  const modal = document.getElementById('clientsModal');
+  modal.style.display = "block";
+  document.body.style.overflow = 'hidden';
+}
+
+function closeClientsModal() {
+  const modal = document.getElementById('clientsModal');
+  modal.style.display = "none";
+  document.body.style.overflow = '';
+}
+
 // Close modal when clicking outside
 window.onclick = function(event) {
   const modal = document.getElementById('myModal');
+  const clientsModal = document.getElementById('clientsModal');
   if (event.target == modal) {
     closeModal();
   }
-}
-
-// Add escape key support
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    closeModal();
+  if (event.target == clientsModal) {
+    closeClientsModal();
   }
-});
+}
 
 // QR Code functions
 function generateQR() {
